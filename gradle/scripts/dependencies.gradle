@@ -58,7 +58,7 @@ dependencies {
     //     transitive = false
     // }
 
-    modImplementation name: 'AppliedEnergistics2-Supergiant', version: '1.0.0', classifier: 'dev'
+    modImplementation name: 'AppliedEnergistics2-Supergiant', version: '1.0.1', classifier: 'dev'
     modCompileOnly 'curse.maven:mekanism-268560:2835175'
     modRuntimeOnly 'curse.maven:mekanism-268560:2835175'
     modCompileOnly 'curse.maven:flux-networks-248020:3178199'

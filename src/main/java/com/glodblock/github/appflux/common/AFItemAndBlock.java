@@ -1,14 +1,9 @@
 package com.glodblock.github.appflux.common;
 
-import appeng.items.materials.MaterialItem;
-import appeng.items.parts.PartItem;
+import ae2.items.materials.MaterialItem;
+import ae2.items.parts.PartItem;
 import com.glodblock.github.appflux.common.blocks.BlockFluxAccessor;
-import com.glodblock.github.appflux.common.items.ItemCreativeFECell;
-import com.glodblock.github.appflux.common.items.ItemFECell;
-import com.glodblock.github.appflux.common.items.ItemInductionCard;
-import com.glodblock.github.appflux.common.items.ItemMEGAFECell;
-import com.glodblock.github.appflux.common.items.ItemPortableFECell;
-import com.glodblock.github.appflux.common.items.ItemPortableMEGAFECell;
+import com.glodblock.github.appflux.common.items.*;
 import com.glodblock.github.appflux.common.parts.PartFluxAccessor;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;

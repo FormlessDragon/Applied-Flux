@@ -1,20 +1,21 @@
 package com.glodblock.github.appflux.common.parts;
 
-import appeng.api.networking.GridFlags;
-import appeng.api.networking.IManagedGridNode;
-import appeng.api.networking.energy.IEnergyService;
-import appeng.api.networking.security.IActionSource;
-import appeng.api.networking.storage.IStorageService;
-import appeng.api.networking.IGridNode;
-import appeng.api.networking.ticking.IGridTickable;
-import appeng.api.networking.ticking.TickRateModulation;
-import appeng.api.networking.ticking.TickingRequest;
-import appeng.api.parts.IPartCollisionHelper;
-import appeng.api.parts.IPartItem;
-import appeng.api.parts.IPartModel;
-import appeng.api.util.AECableType;
-import appeng.parts.AEBasePart;
-import appeng.parts.PartModel;
+import ae2.api.networking.GridFlags;
+import ae2.api.networking.IGridNode;
+import ae2.api.networking.IGridNodeListener;
+import ae2.api.networking.IManagedGridNode;
+import ae2.api.networking.energy.IEnergyService;
+import ae2.api.networking.security.IActionSource;
+import ae2.api.networking.storage.IStorageService;
+import ae2.api.networking.ticking.IGridTickable;
+import ae2.api.networking.ticking.TickRateModulation;
+import ae2.api.networking.ticking.TickingRequest;
+import ae2.api.parts.IPartCollisionHelper;
+import ae2.api.parts.IPartItem;
+import ae2.api.parts.IPartModel;
+import ae2.api.util.AECableType;
+import ae2.parts.AEBasePart;
+import ae2.parts.PartModel;
 import com.glodblock.github.appflux.AppFlux;
 import com.glodblock.github.appflux.common.caps.NetworkFEPower;
 import com.glodblock.github.appflux.common.me.energy.EnergyHandler;
@@ -24,7 +25,6 @@ import com.glodblock.github.appflux.util.helpers.INeighborListener;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.energy.IEnergyStorage;
 
 public class PartFluxAccessor extends AEBasePart implements INeighborListener, IGridTickable {
@@ -59,17 +59,12 @@ public class PartFluxAccessor extends AEBasePart implements INeighborListener, I
     }
 
     @Override
-    public void addToWorld() {
-        super.addToWorld();
-    }
-
-    @Override
     public void onChange(EnumFacing side) {
         actions[side.ordinal()] = null;
     }
 
     @Override
-    public void onMainNodeStateChanged(appeng.api.networking.IGridNodeListener.State reason) {
+    public void onMainNodeStateChanged(IGridNodeListener.State reason) {
         super.onMainNodeStateChanged(reason);
         tickEnergy();
     }
@@ -92,8 +87,7 @@ public class PartFluxAccessor extends AEBasePart implements INeighborListener, I
         TileEntity te = AFUtil.neighbor(getTileEntity(), side);
         if (actions[side.ordinal()] == null) {
             EnumFacing targetSide = side.getOpposite();
-            actions[side.ordinal()] = te != null
-                    && AFUtil.isWhiteListTE(te, targetSide)
+            actions[side.ordinal()] = AFUtil.isWhiteListTE(te, targetSide)
                     && AFUtil.shouldTryCast(te, targetSide)
                     ? EnergyHandler.getHandler(te, targetSide)
                     : EnergyHandler.SendAction.NOOP;

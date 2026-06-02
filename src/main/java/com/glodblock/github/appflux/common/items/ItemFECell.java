@@ -1,12 +1,12 @@
 package com.glodblock.github.appflux.common.items;
 
-import appeng.api.stacks.AEKeyType;
-import appeng.api.storage.StorageCells;
-import appeng.api.upgrades.IUpgradeInventory;
-import appeng.api.upgrades.UpgradeInventories;
-import appeng.core.localization.PlayerMessages;
-import appeng.items.AEBaseItem;
-import appeng.util.InteractionUtil;
+import ae2.api.stacks.AEKeyType;
+import ae2.api.storage.StorageCells;
+import ae2.api.upgrades.IUpgradeInventory;
+import ae2.api.upgrades.UpgradeInventories;
+import ae2.core.localization.PlayerMessages;
+import ae2.items.AEBaseItem;
+import ae2.util.InteractionUtil;
 import com.glodblock.github.appflux.api.IFluxCell;
 import com.glodblock.github.appflux.common.AFItemAndBlock;
 import com.glodblock.github.appflux.common.caps.CellFEPower;
@@ -30,6 +30,7 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.energy.CapabilityEnergy;
 import org.apache.commons.lang3.Validate;
+import org.jspecify.annotations.NonNull;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -132,12 +133,12 @@ public class ItemFECell extends AEBaseItem implements IFluxCell {
             private final CellFEPower power = new CellFEPower(inv);
 
             @Override
-            public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
+            public boolean hasCapability(@NonNull Capability<?> capability, @Nullable EnumFacing facing) {
                 return capability == CapabilityEnergy.ENERGY;
             }
 
             @Override
-            public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
+            public <T> T getCapability(@NonNull Capability<T> capability, @Nullable EnumFacing facing) {
                 return capability == CapabilityEnergy.ENERGY ? CapabilityEnergy.ENERGY.cast(power) : null;
             }
         };

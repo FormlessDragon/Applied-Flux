@@ -1,7 +1,7 @@
 package com.glodblock.github.appflux.mixins;
 
-import appeng.block.crafting.PatternProviderBlock;
-import appeng.helpers.patternprovider.PatternProviderLogicHost;
+import ae2.block.crafting.PatternProviderBlock;
+import ae2.helpers.patternprovider.PatternProviderLogicHost;
 import com.glodblock.github.appflux.util.AFUtil;
 import com.glodblock.github.appflux.util.helpers.INeighborListener;
 import net.minecraft.block.Block;

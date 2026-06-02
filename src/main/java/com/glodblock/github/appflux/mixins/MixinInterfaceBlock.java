@@ -1,9 +1,8 @@
 package com.glodblock.github.appflux.mixins;
 
-import appeng.block.AEBaseBlock;
-import appeng.block.misc.InterfaceBlock;
-import appeng.helpers.InterfaceLogicHost;
-import appeng.helpers.patternprovider.PatternProviderLogicHost;
+import ae2.block.AEBaseBlock;
+import ae2.block.misc.InterfaceBlock;
+import ae2.helpers.InterfaceLogicHost;
 import com.glodblock.github.appflux.util.AFUtil;
 import com.glodblock.github.appflux.util.helpers.INeighborListener;
 import net.minecraft.block.Block;
@@ -12,11 +11,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(InterfaceBlock.class)
 public abstract class MixinInterfaceBlock extends AEBaseBlock {

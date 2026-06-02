@@ -1,10 +1,10 @@
 package com.glodblock.github.appflux.common.me.energy;
 
-import appeng.api.config.Actionable;
-import appeng.api.config.PowerUnit;
-import appeng.api.networking.energy.IEnergyService;
-import appeng.api.networking.security.IActionSource;
-import appeng.api.networking.storage.IStorageService;
+import ae2.api.config.Actionable;
+import ae2.api.config.PowerUnit;
+import ae2.api.networking.energy.IEnergyService;
+import ae2.api.networking.security.IActionSource;
+import ae2.api.networking.storage.IStorageService;
 import com.glodblock.github.appflux.common.me.key.FluxKey;
 import com.glodblock.github.appflux.common.me.key.type.EnergyType;
 import com.glodblock.github.appflux.config.AFConfig;
@@ -27,10 +27,7 @@ public final class EnergyHandler {
             return (storage, source) -> sendFE(cap, storage, source);
         }
         if (Loader.isModLoaded("mekanism")) {
-            SendAction mekanism = MekEnergyHelper.getHandler(te, side);
-            if (mekanism != SendAction.NOOP) {
-                return mekanism;
-            }
+            return MekEnergyHelper.getHandler(te, side);
         }
         return SendAction.NOOP;
     }

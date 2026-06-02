@@ -1,8 +1,8 @@
 package com.glodblock.github.appflux.common.me.cell;
 
-import appeng.api.storage.cells.ICellHandler;
-import appeng.api.storage.cells.ISaveProvider;
-import appeng.api.storage.cells.StorageCell;
+import ae2.api.storage.cells.ICellHandler;
+import ae2.api.storage.cells.ISaveProvider;
+import ae2.api.storage.cells.StorageCell;
 import com.glodblock.github.appflux.common.items.ItemCreativeFECell;
 import net.minecraft.item.ItemStack;
 

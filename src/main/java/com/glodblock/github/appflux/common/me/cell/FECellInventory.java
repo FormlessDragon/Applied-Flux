@@ -1,6 +1,6 @@
 package com.glodblock.github.appflux.common.me.cell;
 
-import appeng.api.storage.cells.ISaveProvider;
+import ae2.api.storage.cells.ISaveProvider;
 import com.glodblock.github.appflux.api.IFluxCell;
 import com.glodblock.github.appflux.common.me.key.type.EnergyType;
 import net.minecraft.item.ItemStack;

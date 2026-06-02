@@ -1,8 +1,8 @@
 package com.glodblock.github.appflux.common.me.strategy;
 
-import appeng.api.behaviors.ContainerItemStrategy;
-import appeng.api.config.Actionable;
-import appeng.api.stacks.GenericStack;
+import ae2.api.behaviors.ContainerItemStrategy;
+import ae2.api.config.Actionable;
+import ae2.api.stacks.GenericStack;
 import com.glodblock.github.appflux.common.me.key.FluxKey;
 import com.glodblock.github.appflux.common.me.key.type.EnergyType;
 import com.glodblock.github.appflux.common.me.key.type.FluxKeyType;

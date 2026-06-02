@@ -1,9 +1,9 @@
 package com.glodblock.github.appflux.common.me.service;
 
-import appeng.api.networking.GridServices;
-import appeng.api.networking.IGridNode;
-import appeng.api.networking.IGridService;
-import appeng.api.networking.IGridServiceProvider;
+import ae2.api.networking.GridServices;
+import ae2.api.networking.IGridNode;
+import ae2.api.networking.IGridService;
+import ae2.api.networking.IGridServiceProvider;
 
 import javax.annotation.Nullable;
 import java.util.Collections;

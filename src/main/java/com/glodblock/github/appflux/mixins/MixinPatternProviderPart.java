@@ -1,9 +1,9 @@
 package com.glodblock.github.appflux.mixins;
 
-import appeng.helpers.patternprovider.PatternProviderLogic;
-import appeng.api.parts.IPartItem;
-import appeng.parts.AEBasePart;
-import appeng.parts.crafting.PatternProviderPart;
+import ae2.api.parts.IPartItem;
+import ae2.helpers.patternprovider.PatternProviderLogic;
+import ae2.parts.AEBasePart;
+import ae2.parts.crafting.PatternProviderPart;
 import com.glodblock.github.appflux.util.AFUtil;
 import com.glodblock.github.appflux.util.helpers.INeighborListener;
 import net.minecraft.util.EnumFacing;

@@ -1,6 +1,6 @@
 package com.glodblock.github.appflux.client.render;
 
-import appeng.api.client.AEKeyRenderHandler;
+import ae2.api.client.AEKeyRenderHandler;
 import com.glodblock.github.appflux.AppFlux;
 import com.glodblock.github.appflux.common.me.key.FluxKey;
 import net.minecraft.client.Minecraft;
@@ -12,11 +12,7 @@ import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
-
-import java.util.Arrays;
-import java.util.List;
 
 public class FluxKeyRenderHandler implements AEKeyRenderHandler<FluxKey> {
 

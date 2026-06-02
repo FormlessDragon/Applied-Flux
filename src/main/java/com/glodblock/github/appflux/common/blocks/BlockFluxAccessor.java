@@ -1,6 +1,6 @@
 package com.glodblock.github.appflux.common.blocks;
 
-import appeng.block.AEBaseTileBlock;
+import ae2.block.AEBaseTileBlock;
 import com.glodblock.github.appflux.common.tileentities.TileFluxAccessor;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.util.ITooltipFlag;

@@ -1,9 +1,9 @@
 package com.glodblock.github.appflux.mixins;
 
-import appeng.api.parts.IPartItem;
-import appeng.helpers.InterfaceLogic;
-import appeng.parts.AEBasePart;
-import appeng.parts.misc.InterfacePart;
+import ae2.api.parts.IPartItem;
+import ae2.helpers.InterfaceLogic;
+import ae2.parts.AEBasePart;
+import ae2.parts.misc.InterfacePart;
 import com.glodblock.github.appflux.util.AFUtil;
 import com.glodblock.github.appflux.util.helpers.INeighborListener;
 import net.minecraft.util.EnumFacing;

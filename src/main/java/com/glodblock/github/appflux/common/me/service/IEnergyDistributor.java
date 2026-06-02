@@ -1,6 +1,6 @@
 package com.glodblock.github.appflux.common.me.service;
 
-import appeng.api.networking.IGridNodeService;
+import ae2.api.networking.IGridNodeService;
 
 public interface IEnergyDistributor extends IGridNodeService {
     void distribute();

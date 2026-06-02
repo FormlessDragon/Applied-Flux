@@ -1,6 +1,6 @@
 package com.glodblock.github.appflux.common.items;
 
-import appeng.items.materials.UpgradeCardItem;
+import ae2.items.materials.UpgradeCardItem;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;

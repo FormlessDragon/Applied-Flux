@@ -1,9 +1,8 @@
 package com.glodblock.github.appflux;
 
-import appeng.api.stacks.AEKeyTypes;
-import appeng.api.storage.StorageCells;
-import appeng.parts.automation.StackWorldBehaviors;
-import com.glodblock.github.appflux.client.AFClientRegistryHandler;
+import ae2.api.stacks.AEKeyTypes;
+import ae2.api.storage.StorageCells;
+import ae2.parts.automation.StackWorldBehaviors;
 import com.glodblock.github.appflux.common.AFItemAndBlock;
 import com.glodblock.github.appflux.common.AFRegistryHandler;
 import com.glodblock.github.appflux.common.me.cell.FECellHandler;

@@ -1,10 +1,10 @@
 package com.glodblock.github.appflux.common.me.cell;
 
-import appeng.api.stacks.GenericStack;
-import appeng.api.storage.cells.ICellHandler;
-import appeng.api.storage.cells.ISaveProvider;
-import appeng.api.storage.cells.StorageCell;
-import appeng.items.storage.StorageCellTooltipComponent;
+import ae2.api.stacks.GenericStack;
+import ae2.api.storage.cells.ICellHandler;
+import ae2.api.storage.cells.ISaveProvider;
+import ae2.api.storage.cells.StorageCell;
+import ae2.items.storage.StorageCellTooltipComponent;
 import com.glodblock.github.appflux.api.IFluxCell;
 import com.glodblock.github.appflux.common.items.ItemCreativeFECell;
 import com.glodblock.github.appflux.common.me.key.FluxKey;
@@ -32,8 +32,7 @@ public class FECellHandler implements ICellHandler {
 
     public void addCellInformationToTooltip(ItemStack stack, List<String> lines) {
         StorageCell cell = getCellInventory(stack, null);
-        if (cell instanceof FluxCellInventory) {
-            FluxCellInventory inv = (FluxCellInventory) cell;
+        if (cell instanceof FluxCellInventory inv) {
             lines.add(String.format("%,d / %,d FE", inv.getStoredEnergy(), inv.getMaxEnergy()));
             lines.add(String.format("%,d / %,d Bytes", inv.getUsedBytes(), inv.getTotalBytes()));
         }
@@ -41,8 +40,7 @@ public class FECellHandler implements ICellHandler {
 
     public Optional<StorageCellTooltipComponent> getTooltipImage(ItemStack stack) {
         StorageCell cell = getCellInventory(stack, null);
-        if (cell instanceof FluxCellInventory) {
-            FluxCellInventory inv = (FluxCellInventory) cell;
+        if (cell instanceof FluxCellInventory inv) {
             GenericStack content = new GenericStack(FluxKey.of(EnergyType.FE), inv.getStoredEnergy());
             return Optional.of(new StorageCellTooltipComponent(Collections.emptyList(), Collections.singletonList(content), false, true));
         }

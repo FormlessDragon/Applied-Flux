@@ -1,13 +1,13 @@
 package com.glodblock.github.appflux.util;
 
-import appeng.api.networking.IGrid;
-import appeng.api.networking.IGridNode;
-import appeng.api.networking.IInWorldGridNodeHost;
-import appeng.api.networking.GridHelper;
-import appeng.api.parts.IPartHost;
-import appeng.api.upgrades.IUpgradeableObject;
-import appeng.helpers.InterfaceLogicHost;
-import appeng.helpers.patternprovider.PatternProviderLogicHost;
+import ae2.api.networking.GridHelper;
+import ae2.api.networking.IGrid;
+import ae2.api.networking.IGridNode;
+import ae2.api.networking.IInWorldGridNodeHost;
+import ae2.api.parts.IPartHost;
+import ae2.api.upgrades.IUpgradeableObject;
+import ae2.helpers.InterfaceLogicHost;
+import ae2.helpers.patternprovider.PatternProviderLogicHost;
 import com.glodblock.github.appflux.common.AFItemAndBlock;
 import com.glodblock.github.appflux.common.parts.PartFluxAccessor;
 import com.glodblock.github.appflux.common.tileentities.TileFluxAccessor;
@@ -45,11 +45,11 @@ public final class AFUtil {
     public static IGrid getGrid(TileEntity te, EnumFacing side) {
         if (te instanceof IInWorldGridNodeHost) {
             IGridNode node = ((IInWorldGridNodeHost) te).getGridNode(side);
-            return node == null ? null : node.getGrid();
+            return node == null ? null : node.grid();
         }
         if (te != null && te.getWorld() != null) {
             IGridNode node = GridHelper.getExposedNode(te.getWorld(), te.getPos(), side);
-            return node == null ? null : node.getGrid();
+            return node == null ? null : node.grid();
         }
         return null;
     }

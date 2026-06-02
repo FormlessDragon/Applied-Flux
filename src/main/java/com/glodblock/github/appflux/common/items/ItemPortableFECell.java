@@ -1,13 +1,13 @@
 package com.glodblock.github.appflux.common.items;
 
-import appeng.api.config.Actionable;
-import appeng.api.networking.security.IActionSource;
-import appeng.api.stacks.AEKeyType;
-import appeng.api.upgrades.IUpgradeInventory;
-import appeng.api.upgrades.UpgradeInventories;
-import appeng.api.upgrades.Upgrades;
-import appeng.container.GuiIds;
-import appeng.items.tools.powered.AbstractPortableCell;
+import ae2.api.config.Actionable;
+import ae2.api.networking.security.IActionSource;
+import ae2.api.stacks.AEKeyType;
+import ae2.api.upgrades.IUpgradeInventory;
+import ae2.api.upgrades.UpgradeInventories;
+import ae2.api.upgrades.Upgrades;
+import ae2.container.GuiIds;
+import ae2.items.tools.powered.AbstractPortableCell;
 import com.glodblock.github.appflux.AppFlux;
 import com.glodblock.github.appflux.api.IFluxCell;
 import com.glodblock.github.appflux.common.AFItemAndBlock;
@@ -44,8 +44,7 @@ public class ItemPortableFECell extends AbstractPortableCell implements IFluxCel
     @Override
     public void onUpdate(ItemStack stack, World world, Entity entity, int itemSlot, boolean isSelected) {
         super.onUpdate(stack, world, entity, itemSlot, isSelected);
-        if (!world.isRemote && entity instanceof EntityPlayer && getUpgrades(stack).isInstalled(AFItemAndBlock.INDUCTION_CARD)) {
-            EntityPlayer player = (EntityPlayer) entity;
+        if (!world.isRemote && entity instanceof EntityPlayer player && getUpgrades(stack).isInstalled(AFItemAndBlock.INDUCTION_CARD)) {
             FluxCellInventory inv = (FluxCellInventory) FECellHandler.HANDLER.getCellInventory(stack, null);
             if (inv == null || inv.getStoredEnergy() <= 0) {
                 return;

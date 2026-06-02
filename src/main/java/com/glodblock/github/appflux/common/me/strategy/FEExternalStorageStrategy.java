@@ -1,12 +1,12 @@
 package com.glodblock.github.appflux.common.me.strategy;
 
-import appeng.api.behaviors.ExternalStorageStrategy;
-import appeng.api.config.Actionable;
-import appeng.api.networking.security.IActionSource;
-import appeng.api.stacks.AEKey;
-import appeng.api.stacks.KeyCounter;
-import appeng.api.storage.MEStorage;
-import appeng.core.localization.GuiText;
+import ae2.api.behaviors.ExternalStorageStrategy;
+import ae2.api.config.Actionable;
+import ae2.api.networking.security.IActionSource;
+import ae2.api.stacks.AEKey;
+import ae2.api.stacks.KeyCounter;
+import ae2.api.storage.MEStorage;
+import ae2.core.localization.GuiText;
 import com.glodblock.github.appflux.common.me.key.FluxKey;
 import com.glodblock.github.appflux.common.me.key.type.EnergyType;
 import com.glodblock.github.appflux.common.me.key.type.FluxKeyType;
@@ -19,8 +19,6 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.energy.IEnergyStorage;
-
-import javax.annotation.Nullable;
 
 public class FEExternalStorageStrategy implements ExternalStorageStrategy {
 

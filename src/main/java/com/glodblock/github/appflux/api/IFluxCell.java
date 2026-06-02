@@ -1,10 +1,10 @@
 package com.glodblock.github.appflux.api;
 
-import appeng.api.config.FuzzyMode;
-import appeng.api.stacks.AEKeyType;
-import appeng.api.storage.cells.ICellWorkbenchItem;
-import appeng.api.upgrades.IUpgradeInventory;
-import appeng.util.ConfigInventory;
+import ae2.api.config.FuzzyMode;
+import ae2.api.stacks.AEKeyType;
+import ae2.api.storage.cells.ICellWorkbenchItem;
+import ae2.api.upgrades.IUpgradeInventory;
+import ae2.util.ConfigInventory;
 import com.glodblock.github.appflux.common.me.key.type.EnergyType;
 import net.minecraft.item.ItemStack;
 

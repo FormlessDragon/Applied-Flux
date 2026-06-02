@@ -1,8 +1,8 @@
 package com.glodblock.github.appflux.common;
 
-import appeng.api.parts.IPartHost;
-import appeng.helpers.InterfaceLogicHost;
-import appeng.helpers.patternprovider.PatternProviderLogicHost;
+import ae2.api.parts.IPartHost;
+import ae2.helpers.InterfaceLogicHost;
+import ae2.helpers.patternprovider.PatternProviderLogicHost;
 import com.glodblock.github.appflux.Reference;
 import com.glodblock.github.appflux.util.helpers.INeighborListener;
 import net.minecraft.tileentity.TileEntity;

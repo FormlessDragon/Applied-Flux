@@ -1,6 +1,6 @@
 package com.glodblock.github.appflux.client;
 
-import appeng.api.client.AEKeyRendering;
+import ae2.api.client.AEKeyRendering;
 import com.glodblock.github.appflux.Reference;
 import com.glodblock.github.appflux.client.render.FluxKeyRenderHandler;
 import com.glodblock.github.appflux.common.AFRegistryHandler;

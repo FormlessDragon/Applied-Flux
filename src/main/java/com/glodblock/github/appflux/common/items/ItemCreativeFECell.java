@@ -1,9 +1,9 @@
 package com.glodblock.github.appflux.common.items;
 
-import appeng.api.stacks.AEKeyType;
-import appeng.api.upgrades.IUpgradeInventory;
-import appeng.api.upgrades.UpgradeInventories;
-import appeng.items.AEBaseItem;
+import ae2.api.stacks.AEKeyType;
+import ae2.api.upgrades.IUpgradeInventory;
+import ae2.api.upgrades.UpgradeInventories;
+import ae2.items.AEBaseItem;
 import com.glodblock.github.appflux.api.IFluxCell;
 import com.glodblock.github.appflux.common.me.key.type.EnergyType;
 import com.glodblock.github.appflux.common.me.key.type.FluxKeyType;

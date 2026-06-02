@@ -1,14 +1,13 @@
 package com.glodblock.github.appflux.common.tileentities;
 
-import appeng.api.networking.GridFlags;
-import appeng.api.networking.IGridNodeListener;
-import appeng.api.networking.IManagedGridNode;
-import appeng.api.networking.GridHelper;
-import appeng.api.networking.energy.IEnergyService;
-import appeng.api.networking.security.IActionSource;
-import appeng.api.networking.storage.IStorageService;
-import appeng.api.util.AECableType;
-import appeng.tile.grid.AENetworkedTile;
+import ae2.api.networking.GridFlags;
+import ae2.api.networking.GridHelper;
+import ae2.api.networking.IManagedGridNode;
+import ae2.api.networking.energy.IEnergyService;
+import ae2.api.networking.security.IActionSource;
+import ae2.api.networking.storage.IStorageService;
+import ae2.api.util.AECableType;
+import ae2.tile.grid.AENetworkedTile;
 import com.glodblock.github.appflux.common.caps.NetworkFEPower;
 import com.glodblock.github.appflux.common.me.energy.EnergyHandler;
 import com.glodblock.github.appflux.config.AFConfig;
@@ -30,12 +29,7 @@ public class TileFluxAccessor extends AENetworkedTile implements INeighborListen
 
     @Override
     protected IManagedGridNode createMainNode() {
-        return GridHelper.createManagedNode(this, new IGridNodeListener<TileFluxAccessor>() {
-            @Override
-            public void onSaveChanges(TileFluxAccessor nodeOwner, appeng.api.networking.IGridNode node) {
-                nodeOwner.saveChanges();
-            }
-        }).setFlags(GridFlags.REQUIRE_CHANNEL).setVisualRepresentation(getItemFromTile());
+        return GridHelper.createManagedNode(this, (nodeOwner, node) -> nodeOwner.saveChanges()).setFlags(GridFlags.REQUIRE_CHANNEL).setVisualRepresentation(getItemFromTile());
     }
 
     @Override
@@ -57,8 +51,7 @@ public class TileFluxAccessor extends AENetworkedTile implements INeighborListen
             if (actions[side.ordinal()] == null) {
                 TileEntity te = AFUtil.neighbor(this, side);
                 EnumFacing targetSide = side.getOpposite();
-                actions[side.ordinal()] = te != null
-                        && AFUtil.isWhiteListTE(te, targetSide)
+                actions[side.ordinal()] = AFUtil.isWhiteListTE(te, targetSide)
                         && AFUtil.shouldTryCast(te, targetSide)
                         ? EnergyHandler.getHandler(te, targetSide)
                         : EnergyHandler.SendAction.NOOP;

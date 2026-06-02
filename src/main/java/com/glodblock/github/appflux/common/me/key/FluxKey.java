@@ -1,7 +1,7 @@
 package com.glodblock.github.appflux.common.me.key;
 
-import appeng.api.stacks.AEKey;
-import appeng.api.stacks.AEKeyType;
+import ae2.api.stacks.AEKey;
+import ae2.api.stacks.AEKeyType;
 import com.glodblock.github.appflux.common.me.key.type.EnergyType;
 import com.glodblock.github.appflux.common.me.key.type.FluxKeyType;
 import net.minecraft.item.ItemStack;

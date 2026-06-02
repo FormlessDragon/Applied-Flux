@@ -1,7 +1,7 @@
 package com.glodblock.github.appflux.common.me.key.type;
 
-import appeng.api.stacks.AEKey;
-import appeng.api.stacks.AEKeyType;
+import ae2.api.stacks.AEKey;
+import ae2.api.stacks.AEKeyType;
 import com.glodblock.github.appflux.AppFlux;
 import com.glodblock.github.appflux.common.me.key.FluxKey;
 import com.glodblock.github.appflux.config.AFConfig;

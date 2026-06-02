@@ -1,9 +1,9 @@
 package com.glodblock.github.appflux.common.me.strategy;
 
-import appeng.api.behaviors.StackExportStrategy;
-import appeng.api.behaviors.StackTransferContext;
-import appeng.api.config.Actionable;
-import appeng.api.stacks.AEKey;
+import ae2.api.behaviors.StackExportStrategy;
+import ae2.api.behaviors.StackTransferContext;
+import ae2.api.config.Actionable;
+import ae2.api.stacks.AEKey;
 import com.glodblock.github.appflux.common.me.key.FluxKey;
 import com.glodblock.github.appflux.common.me.key.type.EnergyType;
 import com.glodblock.github.appflux.util.AFUtil;
