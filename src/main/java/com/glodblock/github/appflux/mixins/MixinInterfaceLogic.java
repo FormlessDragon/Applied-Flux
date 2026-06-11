@@ -4,6 +4,7 @@ import ae2.api.networking.IManagedGridNode;
 import ae2.api.networking.security.IActionSource;
 import ae2.api.networking.storage.IStorageService;
 import ae2.api.upgrades.IUpgradeInventory;
+import ae2.api.upgrades.MachineUpgradesChanged;
 import ae2.api.upgrades.UpgradeInventories;
 import ae2.helpers.InterfaceLogic;
 import ae2.helpers.InterfaceLogicHost;
@@ -19,6 +20,7 @@ import net.minecraft.util.EnumFacing;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import javax.annotation.Nullable;
@@ -48,13 +50,14 @@ public abstract class MixinInterfaceLogic implements IEnergyDistributor, INeighb
     @Shadow
     protected IManagedGridNode mainNode;
 
-    @Shadow
-    protected abstract void onUpgradesChanged();
-
     @Inject(method = "<init>(Lae2/api/networking/IManagedGridNode;Lae2/helpers/InterfaceLogicHost;Lnet/minecraft/item/Item;I)V", at = @At("TAIL"))
     private void appflux$init(IManagedGridNode gridNode, InterfaceLogicHost host, Item item, int slots, CallbackInfo ci) {
-        this.upgrades = UpgradeInventories.forMachine(item, 2, this::onUpgradesChanged);
         this.mainNode.addService(IEnergyDistributor.class, this);
+    }
+
+    @Redirect(method = "<init>(Lae2/api/networking/IManagedGridNode;Lae2/helpers/InterfaceLogicHost;Lnet/minecraft/item/Item;I)V", at = @At(value = "INVOKE", target = "Lae2/api/upgrades/UpgradeInventories;forMachine(Lnet/minecraft/item/Item;ILae2/api/upgrades/MachineUpgradesChanged;)Lae2/api/upgrades/IUpgradeInventory;"))
+    private IUpgradeInventory appflux$forMachine(Item machineType, int maxUpgrades, MachineUpgradesChanged changeCallback) {
+        return UpgradeInventories.forMachine(machineType, maxUpgrades + 1, changeCallback);
     }
 
     @Override

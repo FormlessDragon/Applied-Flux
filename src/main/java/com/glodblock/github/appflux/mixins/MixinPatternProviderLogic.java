@@ -5,6 +5,7 @@ import ae2.api.networking.security.IActionSource;
 import ae2.api.networking.storage.IStorageService;
 import ae2.api.upgrades.IUpgradeInventory;
 import ae2.api.upgrades.IUpgradeableObject;
+import ae2.api.upgrades.MachineUpgradesChanged;
 import ae2.api.upgrades.UpgradeInventories;
 import ae2.helpers.patternprovider.PatternProviderLogic;
 import ae2.helpers.patternprovider.PatternProviderLogicHost;
@@ -20,6 +21,7 @@ import net.minecraft.util.EnumFacing;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import javax.annotation.Nullable;
@@ -49,12 +51,8 @@ public abstract class MixinPatternProviderLogic implements IUpgradeableObject, I
     @Shadow
     private IManagedGridNode mainNode;
 
-    @Shadow
-    protected abstract void onUpgradesChanged();
-
     @Inject(method = "<init>(Lae2/api/networking/IManagedGridNode;Lae2/helpers/patternprovider/PatternProviderLogicHost;Lnet/minecraft/item/Item;I)V", at = @At("TAIL"))
     private void appflux$init(IManagedGridNode mainNode, PatternProviderLogicHost host, Item item, int patternInventorySize, CallbackInfo ci) {
-        upgrades = UpgradeInventories.forMachine(item, 2, this::onUpgradesChanged);
         this.mainNode.addService(IEnergyDistributor.class, this);
     }
 
