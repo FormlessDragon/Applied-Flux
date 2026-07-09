@@ -15,6 +15,8 @@ import com.glodblock.github.appflux.common.tileentities.TileFluxAccessor;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.event.RegistryEvent;
@@ -88,6 +90,12 @@ public class AFRegistryHandler {
     @SubscribeEvent
     public static void registerPartCapabilities(RegisterPartCapabilitiesEvent event) {
         event.register(CapabilityEnergy.ENERGY, (part, side) -> part.getEnergyStorage(), PartFluxAccessor.class);
+    }
+
+
+    @SubscribeEvent
+    public static void registerRecipes(final RegistryEvent.Register<IRecipe> event) {
+        GameRegistry.addSmelting(AFItemAndBlock.INSULATING_RESIN, new ItemStack(AFItemAndBlock.HARDEN_INSULATING_RESIN), 0.35F);
     }
 
     private static void registerCellModels() {
