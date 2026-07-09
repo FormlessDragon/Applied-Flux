@@ -18,6 +18,10 @@ repositories {
         name = 'Modrinth'
         url = 'https://api.modrinth.com/maven'
     }
+    maven {
+        name = "Jitpack"
+        url = uri("https://jitpack.io")
+    }
     mavenCentral()
     mavenLocal() // Must be last for caching to work
 }
@@ -58,10 +62,8 @@ dependencies {
     //     transitive = false
     // }
 
-    modImplementation name: 'AppliedEnergistics2-Supergiant', version: '0.0.0+22f91afc8', classifier: 'dev'
-    modCompileOnly 'curse.maven:mekanism-268560:2835175'
-    modRuntimeOnly 'curse.maven:mekanism-268560:2835175'
-    modCompileOnly 'curse.maven:flux-networks-248020:3178199'
-    modRuntimeOnly 'curse.maven:flux-networks-248020:3178199'
+    modImplementation "com.github.FormlessDragon:Applied-Energistics-2-Supergiant:v1.0.9"
+    modImplementation 'curse.maven:mekanism-268560:2835175'
+    modImplementation 'curse.maven:flux-networks-248020:3178199'
 
 }
