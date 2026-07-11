@@ -1,9 +1,13 @@
 package com.glodblock.github.appflux.common.me.service;
 
+import ae2.api.networking.extensions.GridLogicExtensions;
 import ae2.api.networking.GridServices;
 import ae2.api.networking.IGridNode;
 import ae2.api.networking.IGridService;
 import ae2.api.networking.IGridServiceProvider;
+import ae2.core.definitions.AEBlocks;
+import ae2.core.definitions.AEParts;
+import com.glodblock.github.appflux.AppFlux;
 
 import javax.annotation.Nullable;
 import java.util.Collections;
@@ -16,6 +20,11 @@ public class EnergyDistributeService implements IGridService, IGridServiceProvid
 
     public static void register() {
         GridServices.register(EnergyDistributeService.class, EnergyDistributeService.class);
+        var registrationId = AppFlux.id("energy_distributor");
+        GridLogicExtensions.register(AEBlocks.INTERFACE.item(), registrationId, GridEnergyDistributor::new);
+        GridLogicExtensions.register(AEParts.INTERFACE.item(), registrationId, GridEnergyDistributor::new);
+        GridLogicExtensions.register(AEBlocks.PATTERN_PROVIDER.item(), registrationId, GridEnergyDistributor::new);
+        GridLogicExtensions.register(AEParts.PATTERN_PROVIDER.item(), registrationId, GridEnergyDistributor::new);
     }
 
     @Override

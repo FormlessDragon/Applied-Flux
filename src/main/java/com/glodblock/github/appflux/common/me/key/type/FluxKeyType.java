@@ -38,6 +38,11 @@ public class FluxKeyType extends AEKeyType {
     }
 
     @Override
+    public boolean isCraftingCpuInsertable() {
+        return false;
+    }
+
+    @Override
     public String getUnitSymbol() {
         return "FE";
     }

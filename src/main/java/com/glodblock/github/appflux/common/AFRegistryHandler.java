@@ -132,6 +132,11 @@ public class AFRegistryHandler {
         Upgrades.add(AFItemAndBlock.INDUCTION_CARD, AEParts.INTERFACE.asItem(), 1, GuiText.Interface.getTranslationKey());
         Upgrades.add(AFItemAndBlock.INDUCTION_CARD, AEBlocks.PATTERN_PROVIDER.asItem(), 1, "group.pattern_provider.name");
         Upgrades.add(AFItemAndBlock.INDUCTION_CARD, AEParts.PATTERN_PROVIDER.asItem(), 1, "group.pattern_provider.name");
+        var slotRegistrationId = AppFlux.id("induction_upgrade_slot");
+        Upgrades.addUpgradeSlots(AEBlocks.INTERFACE.asItem(), slotRegistrationId, 1);
+        Upgrades.addUpgradeSlots(AEParts.INTERFACE.asItem(), slotRegistrationId, 1);
+        Upgrades.addUpgradeSlots(AEBlocks.PATTERN_PROVIDER.asItem(), slotRegistrationId, 1);
+        Upgrades.addUpgradeSlots(AEParts.PATTERN_PROVIDER.asItem(), slotRegistrationId, 1);
     }
 
     private static void registerCellUpgrades(Item... cells) {

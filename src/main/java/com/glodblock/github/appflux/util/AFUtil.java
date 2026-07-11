@@ -6,19 +6,15 @@ import ae2.api.networking.IGridNode;
 import ae2.api.networking.IInWorldGridNodeHost;
 import ae2.api.parts.IPartHost;
 import ae2.api.upgrades.IUpgradeableObject;
-import ae2.helpers.InterfaceLogicHost;
 import ae2.helpers.patternprovider.PatternProviderLogicHost;
 import com.glodblock.github.appflux.common.AFItemAndBlock;
 import com.glodblock.github.appflux.common.parts.PartFluxAccessor;
 import com.glodblock.github.appflux.common.tileentities.TileFluxAccessor;
-import com.glodblock.github.appflux.util.helpers.INeighborListener;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.capabilities.Capability;
 
-import java.util.EnumSet;
-import java.util.Set;
 
 public final class AFUtil {
 
@@ -80,14 +76,6 @@ public final class AFUtil {
         return true;
     }
 
-    public static Set<EnumFacing> getSides(InterfaceLogicHost host) {
-        return EnumSet.allOf(EnumFacing.class);
-    }
-
-    public static Set<EnumFacing> getSides(PatternProviderLogicHost host) {
-        return host.getTargets();
-    }
-
     public static TileEntity neighbor(TileEntity te, EnumFacing side) {
         if (te == null || te.getWorld() == null) {
             return null;
@@ -96,22 +84,4 @@ public final class AFUtil {
         return te.getWorld().getTileEntity(pos);
     }
 
-    public static EnumFacing getBlockDirection(BlockPos base, BlockPos target) {
-        if (base == null || target == null || base.equals(target)) {
-            return null;
-        }
-        for (EnumFacing side : EnumFacing.VALUES) {
-            if (base.offset(side).equals(target)) {
-                return side;
-            }
-        }
-        return null;
-    }
-
-    public static void notifyNeighbor(INeighborListener listener, BlockPos pos, BlockPos neighbor) {
-        EnumFacing side = getBlockDirection(pos, neighbor);
-        if (side != null) {
-            listener.onChange(side);
-        }
-    }
 }

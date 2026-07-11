@@ -62,8 +62,10 @@ dependencies {
     //     transitive = false
     // }
 
-    modImplementation "com.github.FormlessDragon:Applied-Energistics-2-Supergiant:v1.0.9"
+    modImplementation name: 'AppliedEnergistics2-Supergiant', version: '1.0.9+ada008de4', classifier: 'dev'
     modImplementation 'curse.maven:mekanism-268560:2835175'
     modImplementation 'curse.maven:flux-networks-248020:3178199'
 
+    // Baubles
+    modCompileOnly "curse.maven:baubles-227083:2518667"
 }
