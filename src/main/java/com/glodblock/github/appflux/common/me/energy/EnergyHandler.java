@@ -22,12 +22,12 @@ public final class EnergyHandler {
     }
 
     public static SendAction getHandler(TileEntity te, EnumFacing side) {
+        if (Loader.isModLoaded("mekanism")) {
+            return MekEnergyHelper.getHandler(te, side);
+        }
         IEnergyStorage cap = AFUtil.findCapability(te, side, CapabilityEnergy.ENERGY);
         if (cap != null) {
             return (storage, source) -> sendFE(cap, storage, source);
-        }
-        if (Loader.isModLoaded("mekanism")) {
-            return MekEnergyHelper.getHandler(te, side);
         }
         return SendAction.NOOP;
     }
