@@ -7,7 +7,7 @@ import ae2.api.networking.security.IActionSource;
 import ae2.api.networking.storage.IStorageService;
 import com.glodblock.github.appflux.common.me.key.FluxKey;
 import com.glodblock.github.appflux.common.me.key.type.EnergyType;
-import com.glodblock.github.appflux.config.AFConfig;
+import com.glodblock.github.appflux.util.config.AFConfig;
 import com.glodblock.github.appflux.util.AFUtil;
 import com.glodblock.github.appflux.xmod.mek.MekEnergyHelper;
 import net.minecraft.tileentity.TileEntity;

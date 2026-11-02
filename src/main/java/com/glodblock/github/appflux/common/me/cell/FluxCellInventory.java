@@ -4,6 +4,7 @@ import ae2.api.config.Actionable;
 import ae2.api.networking.security.IActionSource;
 import ae2.api.stacks.AEKey;
 import ae2.api.stacks.KeyCounter;
+import ae2.api.storage.MEStorageChangeListener;
 import ae2.api.storage.cells.CellState;
 import ae2.api.storage.cells.ISaveProvider;
 import ae2.api.storage.cells.StorageCell;
@@ -31,6 +32,8 @@ public abstract class FluxCellInventory implements StorageCell {
 
     protected long storedEnergy;
     protected boolean persisted = true;
+
+    private final CellChangeNotifier listeners = new CellChangeNotifier();
 
     protected FluxCellInventory(IFluxCell cellType, ItemStack stack, @Nullable ISaveProvider container) {
         this.cellType = cellType;
@@ -98,6 +101,7 @@ public abstract class FluxCellInventory implements StorageCell {
         if (mode == Actionable.MODULATE && inserted > 0) {
             storedEnergy += inserted;
             saveChanges();
+            listeners.onStackChange(FluxKey.of(getEnergyType()), inserted);
         }
         return hasVoidUpgrade ? amount : inserted;
     }
@@ -111,6 +115,7 @@ public abstract class FluxCellInventory implements StorageCell {
         if (mode == Actionable.MODULATE && extracted > 0) {
             storedEnergy -= extracted;
             saveChanges();
+            listeners.onStackChange(FluxKey.of(getEnergyType()), -extracted);
         }
         return extracted;
     }
@@ -147,6 +152,16 @@ public abstract class FluxCellInventory implements StorageCell {
     }
 
     protected abstract EnergyType getEnergyType();
+
+    @Override
+    public void addListener(MEStorageChangeListener listener, Object verificationToken) {
+        listeners.addListener(listener, verificationToken);
+    }
+
+    @Override
+    public void removeListener(MEStorageChangeListener listener) {
+        listeners.removeListener(listener);
+    }
 
     @Override
     public ITextComponent getDescription() {

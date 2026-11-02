@@ -1,7 +1,7 @@
 package com.glodblock.github.appflux.client;
 
 import ae2.api.client.AEKeyRendering;
-import com.glodblock.github.appflux.Reference;
+import com.glodblock.github.appflux.Tags;
 import com.glodblock.github.appflux.client.render.FluxKeyRenderHandler;
 import com.glodblock.github.appflux.common.AFRegistryHandler;
 import com.glodblock.github.appflux.common.me.key.FluxKey;
@@ -26,7 +26,7 @@ public class AFClientRegistryHandler extends AFRegistryHandler {
         AEKeyRendering.register(FluxKeyType.TYPE, FluxKey.class, FluxKeyRenderHandler.INSTANCE);
     }
 
-    @Mod.EventBusSubscriber(modid = Reference.MOD_ID, value = Side.CLIENT)
+    @Mod.EventBusSubscriber(modid = Tags.MOD_ID, value = Side.CLIENT)
     public static final class Models {
 
         private Models() {

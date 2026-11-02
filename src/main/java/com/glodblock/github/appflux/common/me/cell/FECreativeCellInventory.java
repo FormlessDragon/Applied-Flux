@@ -4,6 +4,7 @@ import ae2.api.config.Actionable;
 import ae2.api.networking.security.IActionSource;
 import ae2.api.stacks.AEKey;
 import ae2.api.stacks.KeyCounter;
+import ae2.api.storage.MEStorageChangeListener;
 import ae2.api.storage.cells.CellState;
 import ae2.api.storage.cells.StorageCell;
 import com.glodblock.github.appflux.common.me.key.FluxKey;
@@ -14,6 +15,8 @@ import net.minecraft.util.text.TextComponentTranslation;
 public class FECreativeCellInventory implements StorageCell {
 
     public static final FECreativeCellInventory INSTANCE = new FECreativeCellInventory();
+
+    private final CellChangeNotifier listeners = new CellChangeNotifier();
 
     private FECreativeCellInventory() {
     }
@@ -50,5 +53,16 @@ public class FECreativeCellInventory implements StorageCell {
 
     @Override
     public void persist() {
+    }
+
+    @Override
+    public void addListener(MEStorageChangeListener listener, Object verificationToken) {
+        // The creative cell always reports the same amount, so no content change is ever published.
+        listeners.addListener(listener, verificationToken);
+    }
+
+    @Override
+    public void removeListener(MEStorageChangeListener listener) {
+        listeners.removeListener(listener);
     }
 }

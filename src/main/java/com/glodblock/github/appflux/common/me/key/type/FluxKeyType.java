@@ -4,7 +4,7 @@ import ae2.api.stacks.AEKey;
 import ae2.api.stacks.AEKeyType;
 import com.glodblock.github.appflux.AppFlux;
 import com.glodblock.github.appflux.common.me.key.FluxKey;
-import com.glodblock.github.appflux.config.AFConfig;
+import com.glodblock.github.appflux.util.config.AFConfig;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.text.TextComponentTranslation;

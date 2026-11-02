@@ -6,7 +6,7 @@ import ae2.api.networking.storage.IStorageService;
 import com.glodblock.github.appflux.common.me.energy.EnergyHandler;
 import com.glodblock.github.appflux.common.me.key.FluxKey;
 import com.glodblock.github.appflux.common.me.key.type.EnergyType;
-import com.glodblock.github.appflux.config.AFConfig;
+import com.glodblock.github.appflux.util.config.AFConfig;
 import com.glodblock.github.appflux.util.AFUtil;
 import mekanism.api.energy.IStrictEnergyAcceptor;
 import mekanism.common.capabilities.Capabilities;

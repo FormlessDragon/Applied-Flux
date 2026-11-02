@@ -1,4 +1,4 @@
-package com.glodblock.github.appflux.config;
+package com.glodblock.github.appflux.util.config;
 
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;

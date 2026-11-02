@@ -9,7 +9,7 @@ import ae2.core.definitions.AEItems;
 import ae2.core.definitions.AEParts;
 import ae2.core.localization.GuiText;
 import com.glodblock.github.appflux.AppFlux;
-import com.glodblock.github.appflux.Reference;
+import com.glodblock.github.appflux.Tags;
 import com.glodblock.github.appflux.common.parts.PartFluxAccessor;
 import com.glodblock.github.appflux.common.tileentities.TileFluxAccessor;
 import net.minecraft.block.Block;
@@ -28,7 +28,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-@Mod.EventBusSubscriber(modid = Reference.MOD_ID)
+@Mod.EventBusSubscriber(modid = Tags.MOD_ID)
 public class AFRegistryHandler {
 
     private static final List<Item> ITEMS = new ArrayList<>();
@@ -45,7 +45,7 @@ public class AFRegistryHandler {
 
     public static <T extends Item> T item(String name, T item) {
         item.setRegistryName(AppFlux.id(name));
-        item.setTranslationKey(Reference.MOD_ID + "." + name);
+        item.setTranslationKey(Tags.MOD_ID + "." + name);
         item.setCreativeTab(AFItemAndBlock.TAB);
         ITEMS.add(item);
         return item;
@@ -53,7 +53,7 @@ public class AFRegistryHandler {
 
     public static <T extends Block> T block(String name, T block) {
         block.setRegistryName(AppFlux.id(name));
-        block.setTranslationKey(Reference.MOD_ID + "." + name);
+        block.setTranslationKey(Tags.MOD_ID + "." + name);
         block.setCreativeTab(AFItemAndBlock.TAB);
         BLOCKS.add(block);
         return block;

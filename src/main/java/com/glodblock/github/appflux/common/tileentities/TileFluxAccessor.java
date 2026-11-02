@@ -10,7 +10,7 @@ import ae2.api.util.AECableType;
 import ae2.tile.grid.AENetworkedTile;
 import com.glodblock.github.appflux.common.caps.NetworkFEPower;
 import com.glodblock.github.appflux.common.me.energy.EnergyHandler;
-import com.glodblock.github.appflux.config.AFConfig;
+import com.glodblock.github.appflux.util.config.AFConfig;
 import com.glodblock.github.appflux.util.AFUtil;
 import com.glodblock.github.appflux.util.helpers.INeighborListener;
 import net.minecraft.tileentity.TileEntity;

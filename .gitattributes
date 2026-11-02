@@ -1,0 +1,4 @@
+# Keep line endings stable across platforms so the Spotless check produces the same result
+# on Windows and on Linux CI.
+*.java text eol=lf
+*.gradle text eol=lf

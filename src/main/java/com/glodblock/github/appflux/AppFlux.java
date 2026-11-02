@@ -13,7 +13,7 @@ import com.glodblock.github.appflux.common.me.strategy.FEContainerItemStrategy;
 import com.glodblock.github.appflux.common.me.strategy.FEExternalStorageStrategy;
 import com.glodblock.github.appflux.common.me.strategy.FEStackExportStrategy;
 import com.glodblock.github.appflux.common.me.strategy.FEStackImportStrategy;
-import com.glodblock.github.appflux.config.AFConfig;
+import com.glodblock.github.appflux.util.config.AFConfig;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -22,13 +22,13 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-@Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION, dependencies = "required-after:ae2")
+@Mod(modid = Tags.MOD_ID, name = Tags.MOD_NAME, version = Tags.VERSION, dependencies = "required-after:ae2")
 public class AppFlux {
 
-    public static final Logger LOGGER = LogManager.getLogger(Reference.MOD_NAME);
+    public static final Logger LOGGER = LogManager.getLogger(Tags.MOD_NAME);
 
     @SidedProxy(
-            modId = Reference.MOD_ID,
+            modId = Tags.MOD_ID,
             clientSide = "com.glodblock.github.appflux.client.AFClientRegistryHandler",
             serverSide = "com.glodblock.github.appflux.common.AFRegistryHandler"
     )
@@ -57,6 +57,6 @@ public class AppFlux {
     }
 
     public static ResourceLocation id(String id) {
-        return new ResourceLocation(Reference.MOD_ID, id);
+        return new ResourceLocation(Tags.MOD_ID, id);
     }
 }
