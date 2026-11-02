@@ -18,9 +18,9 @@ apply from: 'gradle/scripts/helpers.gradle'
 private String gitOutput(List<String> args, String fallback) {
     try {
         def process = new ProcessBuilder(['git'] + args)
-            .directory(rootProject.projectDir)
-            .redirectErrorStream(true)
-            .start()
+                .directory(rootProject.projectDir)
+                .redirectErrorStream(true)
+                .start()
         def stdout = process.inputStream.getText('UTF-8').trim()
         if (process.waitFor() == 0 && !stdout.isEmpty()) {
             return stdout
@@ -173,6 +173,12 @@ if (useMixins) {
             mixinRefmap = add(refmap)
         }
     }
+} else {
+    mixin {
+        // Without configured mixins the plugin would still write an empty `MixinConfigs`
+        // manifest entry, which Cleanroom treats as a mixin mod. Leave it out entirely.
+        writeConfigsToJarManifest = false
+    }
 }
 
 // Do not configure your deps here!
@@ -232,20 +238,20 @@ sourceSets {
 processResources {
     rename '(.+_at.cfg)', 'META-INF/$1'
     def resourceProps = [
-        mod_id               : propertyString('mod_id'),
-        mod_name             : propertyString('mod_name'),
-        mod_version          : propertyString('mod_version'),
-        mod_description      : propertyString('mod_description'),
-        mod_authors          : propertyStringList('mod_authors', ',').collect { it.strip() }.join('", "'),
-        mod_credits          : propertyString('mod_credits'),
-        mod_license          : propertyString('mod_license'),
-        mod_url              : propertyString('mod_url'),
-        mod_issue_tracker_url: propertyString('mod_issue_tracker_url'),
-        mod_update_json      : propertyString('mod_update_json'),
-        mod_icon_item        : propertyString('mod_icon_item'),
-        mod_logo_path        : propertyString('mod_logo_path'),
-        mod_icon_path        : propertyString('mod_icon_path'),
-        mod_background_path  : propertyString('mod_background_path')
+            mod_id               : propertyString('mod_id'),
+            mod_name             : propertyString('mod_name'),
+            mod_version          : propertyString('mod_version'),
+            mod_description      : propertyString('mod_description'),
+            mod_authors          : propertyStringList('mod_authors', ',').collect { it.strip() }.join('", "'),
+            mod_credits          : propertyString('mod_credits'),
+            mod_license          : propertyString('mod_license'),
+            mod_url              : propertyString('mod_url'),
+            mod_issue_tracker_url: propertyString('mod_issue_tracker_url'),
+            mod_update_json      : propertyString('mod_update_json'),
+            mod_icon_item        : propertyString('mod_icon_item'),
+            mod_logo_path        : propertyString('mod_logo_path'),
+            mod_icon_path        : propertyString('mod_icon_path'),
+            mod_background_path  : propertyString('mod_background_path')
     ]
     inputs.properties(resourceProps)
     filesMatching(['mcmod.info', 'pack.mcmeta']) {
@@ -286,6 +292,15 @@ def syncDevClassesToResources = tasks.register('syncDevClassesToResources', Copy
     into(layout.buildDirectory.dir('resources/main'))
 }
 
+// `javadoc` reads the shared classes directory, which the dev-sync tasks rewrite.
+tasks.withType(Javadoc).configureEach {
+    dependsOn(syncDevResourcesToClasses, syncDevClassesToResources)
+    options.encoding = 'UTF-8'
+    options.charSet = 'UTF-8'
+    options.docEncoding = 'UTF-8'
+    options.addStringOption('Xdoclint:none', '-quiet')
+}
+
 
 compileJava {
     dependsOn(generateTagsSource)
@@ -295,11 +310,6 @@ compileJava {
 tasks.named('sourcesJar').configure {
     dependsOn(generateTagsSource)
 }
-
-tasks.named('javadoc') {
-    dependsOn 'syncDevResourcesToClasses'
-}
-
 
 def modManifestAttributes = {
     def attribute_map = [:]
@@ -348,7 +358,7 @@ if (propertyBool('enable_shadow')) {
         archiveClassifier = 'dev'
         destinationDirectory = layout.buildDirectory.dir('libs')
         //noinspection GroovyAssignabilityCheck,GroovyAccessibility
-        configurations = [ project.configurations.shaded ]
+        configurations = [project.configurations.shaded]
         // ShadowJar has its own `configurations` (the shaded ones), so the project's have to be qualified
         if (project.configurations.contain.size() > 0) {
             into('/') {
@@ -448,16 +458,16 @@ tasks.register('generateMixinJson') {
             def configFile = file("src/main/resources/${configName}")
             configFile.parentFile.mkdirs()
             def config = [
-                    'package': '',
-                    'refmap': propertyString('mixin_refmap'),
-                    'required': true,
-                    'target': '@env(DEFAULT)',
-                    'minVersion': '0.8.7',
+                    'package'           : '',
+                    'refmap'            : propertyString('mixin_refmap'),
+                    'required'          : true,
+                    'target'            : '@env(DEFAULT)',
+                    'minVersion'        : '0.8.7',
                     'compatibilityLevel': 'JAVA_25',
-                    'mixins': [],
-                    'server': [],
-                    'client': [],
-                    'setSourceFile': true
+                    'mixins'            : [],
+                    'server'            : [],
+                    'client'            : [],
+                    'setSourceFile'     : true
             ]
             configFile.setText(JsonOutput.prettyPrint(JsonOutput.toJson(config)) + '\n', 'UTF-8')
             logger.lifecycle("Generated Mixin JSON: ${configFile}")
