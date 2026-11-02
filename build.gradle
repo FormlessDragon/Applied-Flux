@@ -296,6 +296,11 @@ tasks.named('sourcesJar').configure {
     dependsOn(generateTagsSource)
 }
 
+tasks.named('javadoc') {
+    dependsOn 'syncDevResourcesToClasses'
+}
+
+
 def modManifestAttributes = {
     def attribute_map = [:]
     attribute_map['ModType'] = "CRL"
